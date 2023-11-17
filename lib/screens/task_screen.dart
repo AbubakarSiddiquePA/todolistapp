@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/task_data.dart';
 import '../widgets/tasks_list.dart';
 import 'add_task_screen.dart';
@@ -23,7 +22,7 @@ class TasksScreen extends StatelessWidget {
                         child: Container(
                       padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: AddTaskScreen(),
+                      child: const AddTaskScreen(),
                     )));
           }),
       body: Column(
@@ -48,7 +47,7 @@ class TasksScreen extends StatelessWidget {
                   height: 10.0,
                 ),
                 const Text(
-                  'Todoey',
+                  'Todo Things',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50.0,
@@ -75,7 +74,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: TasksList(),
+              child: const TasksList(),
             ),
           ),
         ],

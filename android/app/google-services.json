@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "242006448101",
+    "project_id": "todothings-ebb92",
+    "storage_bucket": "todothings-ebb92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242006448101:android:a76fdd105876d820e6010c",
+        "android_client_info": {
+          "package_name": "com.example.todo_things"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfBF68X_R0xt9yBRohmpPN_SPfCffuw6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
