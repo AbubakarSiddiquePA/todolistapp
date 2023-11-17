@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_things/models/task_data.dart';
 
 class TaskTile extends StatelessWidget {
   final bool isChecked;
   final String taskTitle;
-  final VoidCallback checkboxCallback; // Specify the function signature
-  final VoidCallback longPressCallback; // Specify the function signature
+  final VoidCallback longPressCallback;
 
   const TaskTile({
-    super.key,
+    Key? key,
     required this.isChecked,
     required this.taskTitle,
-    required this.checkboxCallback,
     required this.longPressCallback,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,8 @@ class TaskTile extends StatelessWidget {
         activeColor: Colors.lightBlueAccent,
         value: isChecked,
         onChanged: (bool? newValue) {
-          checkboxCallback(); // Call the callback function when the checkbox state changes
+          Provider.of<TaskData>(context, listen: false)
+              .updateTaskToggleDone(taskTitle);
         },
       ),
     );

@@ -10,7 +10,11 @@ void main() async {
   // Initialize Firebase
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => TaskData(),
+    )
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,11 +22,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TaskData(),
-      child: const MaterialApp(
-        home: TasksScreen(),
-      ),
+    return const MaterialApp(
+      home: TasksScreen(),
     );
   }
 }

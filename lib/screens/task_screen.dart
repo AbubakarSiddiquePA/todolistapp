@@ -9,6 +9,9 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // while restarting data stores as it is
+    final taskData = Provider.of<TaskData>(context, listen: false);
+    taskData.fetchTasks();
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(

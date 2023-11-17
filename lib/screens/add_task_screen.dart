@@ -33,7 +33,7 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ),
             TextField(
-              autofocus: true,
+              autofocus: true, //keyboard displays
               textAlign: TextAlign.center,
               onChanged: (newText) {
                 newTaskTitle = newText;
