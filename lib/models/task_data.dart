@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'dart:collection';
 
 import 'package:todo_things/models/task.dart';
@@ -10,6 +11,7 @@ class TaskData extends ChangeNotifier {
 
   final List<Task> _tasks = [];
 
+//creates a copy of original list
   UnmodifiableListView<Task> get tasks {
     return UnmodifiableListView(_tasks);
   }
@@ -25,7 +27,7 @@ class TaskData extends ChangeNotifier {
       return Task(id: doc.id, name: data["name"], isDone: data["isDone"]);
     }).toList();
 
-    _tasks.clear(); // Clear the existing tasks
+    _tasks.clear(); // Clear the existing(repeating task in screen) tasks
     _tasks.addAll(updatedTasks); // Add the updated tasks
     notifyListeners();
   }
@@ -37,20 +39,10 @@ class TaskData extends ChangeNotifier {
       "isDone": task.isDone,
     });
     await fetchTasks();
-    // _tasks.add(task);
     notifyListeners();
   }
 
-  // void updateTask(Task task) async {
-  //   await taskCollection.doc(task.id).update({"isDone": task.isDone});
-  //   await fetchTasks();
-  //   task.toggleDone();
-  //   notifyListeners();
-  // }
-
   void updateTaskToggleDone(String taskTitle) async {
-    // await taskCollection.doc(task.id).update({"isDone": task.isDone});
-    // await fetchTasks();
     Task task = _tasks.firstWhere((task) => task.name == taskTitle);
     task.toggleDone();
     await taskCollection.doc(task.id).update({"isDone": task.isDone});
@@ -62,7 +54,6 @@ class TaskData extends ChangeNotifier {
     await taskCollection.doc(task.id).delete();
     await fetchTasks(); // Refresh the local task list
 
-    // _tasks.remove(task);
     notifyListeners();
   }
 }

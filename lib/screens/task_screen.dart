@@ -13,6 +13,13 @@ class TasksScreen extends StatelessWidget {
     final taskData = Provider.of<TaskData>(context, listen: false);
     taskData.fetchTasks();
     return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(35),
+          child: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    colors: <Color>[Colors.blueGrey, Colors.lightBlueAccent])),
+          )),
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,

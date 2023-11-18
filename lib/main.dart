@@ -5,16 +5,14 @@ import 'package:todo_things/screens/task_screen.dart';
 import 'models/task_data.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required for FlutterFire
-
-  // Initialize Firebase
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => TaskData(),
     )
-  ], child: MyApp()));
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
